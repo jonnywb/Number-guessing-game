@@ -2,40 +2,55 @@
 Python Web Development Techdegree
 Project 1 - Number Guessing Game
 --------------------------------
-
 """
 
 import random
 
+
+# Print game header
 print("""
 /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 Welcome to the Number Guessing Game!
 /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 """)
 
+# User input - Would you like to play?
 play = input('Would you like to play?\nPlease enter \'y\' to continue...\n>    ')
 
+# Begin game
 def start_game():
+
+    # default highscore set to 10 ('lowest' score possible)
     highscore = 10
 
     while True:
-        
+        # Print Highscore each time the game begins
         print('HIGHSCORE: {}'.format(highscore))
-        
+
+        # Random number is generated using range of 1-10
         random_num = random.randint(1, 10)
+
+        # initialise variables for num_of_guesses and user_guess
         num_of_guesses = 0
         user_guess = None
 
+        # Loopception. Will Loop until user has guessed correctly.
         while user_guess != random_num:
 
+            # Begin Exception code
             try:
+                # Temporary variable for input, for use in error code.
                 temp_user_guess = input("Guess which number I'm thinking of, between 1 and 10...\n>  ")
-                user_guess = int(temp_user_guess)
 
+                # Now convert string to integer (Will raise ValueError for wrong type of input)
+                user_guess = int(temp_user_guess)
+                
+                # Catch numbers outside of range and set valueerror message.
                 if user_guess < 1 or user_guess > 10:
                     raise ValueError('The number needs to be between 1 and 10.')
                     continue
-
+                
+                # Set else if for num lower and num higher. Print message, increase num_of_guesses and 'continue' loop.
                 elif user_guess < random_num:
                     print('It\'s higher!')
                     num_of_guesses += 1
@@ -45,7 +60,8 @@ def start_game():
                     print('It\'s lower!')
                     num_of_guesses += 1
                     continue
-
+                
+                # Change the output depending on amount of guesses (this wasn't necessary, but I did it anyway)
                 else:
                     num_of_guesses += 1
                     if num_of_guesses == 1:
@@ -60,10 +76,12 @@ def start_game():
                     elif num_of_guesses == 10:
                         print('Ouch! {} tries!? At least you got there eventually!'.format(num_of_guesses))
 
+                    # Check if highscore, set highscore & print message.
                     if highscore > num_of_guesses:
                         highscore = num_of_guesses
                         print('Congrats, you set a new highscore!')
-
+            
+            # Exception code - deals with strings and integers seperately.
             except ValueError as err:
                 if "invalid" in str(err):
                     print('Oops! \'{}\' isn\'t a number... Please try again!'.format(temp_user_guess))
@@ -72,12 +90,14 @@ def start_game():
                     print('Oops! {} Please try again.'.format(err))
                 continue
         
+        # Allow the user to play again - continue loop, else break loop and go to end game.
         play = input('Would you like to play again?\nEnter \'y\' to continue...\n >')
         if play.lower() != 'y':
             break
         else:
             continue
 
+# Start game if 'y', otherwise, display exit message.
 if play.lower() == 'y':
     start_game()
 print('Thanks for playing!')
