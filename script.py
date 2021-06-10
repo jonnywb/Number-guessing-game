@@ -17,7 +17,7 @@ Welcome to the Number Guessing Game!
 # User input - Would you like to play?
 play = input('Would you like to play?\nPlease enter \'y\' to continue...\n>    ')
 
-# Begin game
+# Game function
 def start_game():
 
     # default highscore set to 10 ('lowest' score possible)
