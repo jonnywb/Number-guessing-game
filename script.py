@@ -45,7 +45,7 @@ def start_game():
                 # Now convert string to integer (Will raise ValueError for wrong type of input)
                 user_guess = int(temp_user_guess)
                 
-                # Catch numbers outside of range and set valueerror message and 'continue' loop
+                # Catch numbers outside of range and set valueerror message.
                 if user_guess < 1 or user_guess > 10:
                     raise ValueError('The number needs to be between 1 and 10.')
                     continue
@@ -61,8 +61,7 @@ def start_game():
                     num_of_guesses += 1
                     continue
                 
-                # Show user how many guesses it took them to find the right number. 
-                # I added some extra if/elif logic that changes the print message, dependent on num_of_guesses.
+                # Change the output depending on amount of guesses (this wasn't necessary, but I did it anyway)
                 else:
                     num_of_guesses += 1
                     if num_of_guesses == 1:
