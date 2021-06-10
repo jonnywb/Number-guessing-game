@@ -20,7 +20,7 @@ play = input('Would you like to play?\nPlease enter \'y\' to continue...\n>    '
 # Game function
 def start_game():
 
-    # default highscore set to 10 ('lowest' score possible)
+    # default highscore set to 100
     highscore = 100
 
     while True:
