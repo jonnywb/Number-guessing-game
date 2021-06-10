@@ -50,7 +50,7 @@ def start_game():
                     raise ValueError('The number needs to be between 1 and 10.')
                     continue
                 
-                # Set else if for num lower and num higher. Print message, increase num_of_guesses and 'continue' loop.
+                # Set else if for num_lower and num_higher. Print message, increase num_of_guesses and 'continue' loop.
                 elif user_guess < random_num:
                     print('It\'s higher!')
                     num_of_guesses += 1
@@ -71,11 +71,11 @@ def start_game():
                     elif num_of_guesses <= 5:
                         print('Got it! That was quick, it only took you {} guesses!'.format(num_of_guesses))
 
-                    elif num_of_guesses <= 9:
-                        print('You got it! Took you a while, though... {} guesses, actually.'.format(num_of_guesses))
+                    elif num_of_guesses <= 10:
+                        print('You got it! Took you a while, though. {} guesses, actually.'.format(num_of_guesses))
 
-                    elif num_of_guesses == 10:
-                        print('Ouch! {} tries!? At least you got there eventually!'.format(num_of_guesses))
+                    else:
+                        print('Ouch! {} tries!? At least you got there eventually...'.format(num_of_guesses))
 
                     # Check if highscore, set highscore & print message.
                     if highscore > num_of_guesses:
